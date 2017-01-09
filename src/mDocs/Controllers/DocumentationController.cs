@@ -2,7 +2,7 @@
 
 namespace mDocs.Controllers
 {
-    public class DocsController : Controller
+    public class DocumentationController : Controller
     {
         [Route("/{*url}")]
         public IActionResult Index(string url)
