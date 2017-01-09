@@ -14,7 +14,7 @@ namespace mDocs
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
+            services.AddMvc(options => options.Conventions.Add(new DocsConvention()))
                 .AddMarkdownViewEngine();
         }
 

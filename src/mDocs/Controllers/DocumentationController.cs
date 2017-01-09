@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace mDocs.Controllers
 {
-    public class HomeController : Controller
+    public class DocsController : Controller
     {
         [HttpGet("/")]
         public IActionResult Index()
