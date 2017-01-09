@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="/images/favicon.ico">
-    <title>{{title}} | mDocs</title>
+    <title>{{title}} | .NET Core Command-Line Interface (CLI)</title>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/styles/theme.css" type="text/css" />
     <link rel="stylesheet" href="/styles/theme_extra.css" type="text/css" />
@@ -24,7 +24,7 @@
     <div class="wy-grid-for-nav">
         <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
             <div class="wy-side-nav-search">
-                <a href="/" class="icon icon-home"> mDocs</a>
+                <a href="/" class="icon icon-home"> .NET Core Command-Line Interface (CLI)</a>
                 <form id="content_search" action="search.html">
                     <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
                     <input name="q" id="mkdocs-search-query" type="text" class="search_input search-query ui-autocomplete-input" placeholder="Search docs" autocomplete="off" autofocus>
@@ -35,8 +35,53 @@
                     <li>
                         <ul class="subnav">
 							<li class="toctree-l1">
-                                <a href="/">Home</a>
-                            </li>
+								<a href="/">Overview</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/telemetry">Telemetry</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/extensibility">Extensibility Model</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/test-protocol">Test communication protocol</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/using-ci-with-cli">Continuous Integration</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/dotnet">dotnet</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/dotnet-new">dotnet new</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/dotnet-restore">dotnet restore</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/dotnet-run">dotnet run</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/dotnet-build">dotnet build</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/dotnet-test">dotnet test</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/dotnet-pack">dotnet pack</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/dotnet-publish">dotnet publish</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/dotnet-install-script">dotnet install-script</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/project-json">project.json</a>
+							</li>
+							<li class="toctree-l1">
+								<a href="/global-json">global.json</a>
+							</li>
                         </ul>
                     </li>
                 </ul>
@@ -45,13 +90,13 @@
         <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
             <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
                 <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-                <a href="#">mDocs</a>
+                <a href="#">.NET Core Command-Line Interface (CLI)</a>
             </nav>
             <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="navigation" aria-label="breadcrumbs navigation">
                         <ul class="wy-breadcrumbs">
-                            <li><a href="/docs/">Docs</a> &raquo;</li>
+                            <li><a href="/">Docs</a> &raquo;</li>
                             <li>{{title}}</li>
                             <li class="wy-breadcrumbs-aside">
                                 <a href="#" class="icon icon-github"> Edit on GitHub</a>
@@ -71,7 +116,7 @@
                         </div>
                         <hr />
                         <div role="contentinfo">
-                            <p>© Copyright 2017, <a href="#">mDocs</a>.</p>
+                            <p>© Copyright 2017, <a href="#">.NET Core Command-Line Interface (CLI)</a>.</p>
                         </div>
                         Built with <a href="#">mDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
                     </footer>
