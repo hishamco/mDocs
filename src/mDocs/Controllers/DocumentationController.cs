@@ -8,10 +8,15 @@ namespace mDocs.Controllers
 {
     public class DocsController : Controller
     {
-        [HttpGet("/")]
-        public IActionResult Index()
+        [Route("/{*url}")]
+        public IActionResult Index(string url)
         {
-            return View();
+            if (url == null || url.EndsWith("/"))
+            {
+                url += "Index";
+            }
+
+            return View(url);
         }
     }
 }
