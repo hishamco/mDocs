@@ -1,0 +1,74 @@
+﻿{
+  "siteName": "NET Core Command-Line Interface (CLI)",
+  "categories": [
+    {
+      "name": "",
+      "pages": [
+        {
+          "title": "Overview",
+          "url": "./"
+        },
+        {
+          "title": "Telemetry",
+          "url": "telemetry"
+        },
+        {
+          "title": "Extensibility Model",
+          "url": "extensibility"
+        },
+        {
+          "title": "Test communication protocol",
+          "url": "test-protocol"
+        },
+        {
+          "title": "Continuous Integration",
+          "url": "using-ci-with-cli"
+        },
+        {
+          "title": "dotnet",
+          "url": "dotnet"
+        },
+        {
+          "title": "dotnet new",
+          "url": "dotnet-new"
+        },
+        {
+          "title": "dotnet restore",
+          "url": "dotnet-restore"
+        },
+        {
+          "title": "dotnet run",
+          "url": "dotnet-run"
+        },
+        {
+          "title": "dotnet build",
+          "url": "dotnet-build"
+        },
+        {
+          "title": "dotnet test",
+          "url": "dotnet-test"
+        },
+        {
+          "title": "dotnet pack",
+          "url": "dotnet-pack"
+        },
+        {
+          "title": "dotnet publish",
+          "url": "dotnet-publish"
+        },
+        {
+          "title": "dotnet install-script",
+          "url": "dotnet-install-script"
+        },
+        {
+          "title": "project.json",
+          "url": "project-json"
+        },
+        {
+          "title": "global.json",
+          "url": "global-json"
+        }
+      ]
+    }
+  ]
+}
