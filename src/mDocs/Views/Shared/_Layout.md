@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="/images/favicon.ico">
-    <title>{{title}} | .NET Core Command-Line Interface (CLI)</title>
+    <title>{{title}} | {{siteName}}</title>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/styles/theme.css" type="text/css" />
     <link rel="stylesheet" href="/styles/theme_extra.css" type="text/css" />
@@ -18,13 +18,66 @@
     <script src="/scripts/jquery-2.1.1.min.js"></script>
     <script src="/scripts/modernizr-2.8.3.min.js"></script>
     <script type="text/javascript" src="/scripts/highlight.pack.js"></script>
-
+	<script src="/scripts/handlebars-v4.0.5.js"></script>
+	    <script src="/scripts/theme.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			var context = {};
+			$.get("/config.json", function(result)
+			{
+				context = eval(result);
+				context.title = "";
+				var pages = getPages(context.categories);
+				setTitle(pages);
+				// replace the tokens in the 'title' tag
+				var source = $("title").text();
+				var template = Handlebars.compile(source);
+				var html = template({
+					"siteName": context.siteName,
+					"title" : context.title
+				});
+				$("title").text(html);
+				// replace the tokens in the 'body' tag
+				source = $("body").html();
+				template = Handlebars.compile(source);
+				html = template(context);
+				$("body").html(html);
+			});
+			function getPages(categories){
+				var pages = [];
+				$.each(categories, function(index, item){
+					$.each(item.pages, function(index, item){
+						pages.push(item);
+					});
+				});
+				return pages;
+			}
+			function setTitle(pages)
+			{
+				var url = location.href;
+				var slashIndex = url.lastIndexOf("/");
+				var pageUrl = url.substring(slashIndex + 1);
+				if(pageUrl == "")
+				{
+					context.title = pages[0].title;
+					return;
+				}
+				for(var i=0; i<pages.length;i++)
+				{			
+					if(pages[i].url == pageUrl){
+						context.title = pages[i].title;
+						break;
+					}
+				}
+			}
+		});
+	</script>
 </head>
 <body class="wy-body-for-nav" role="document">
     <div class="wy-grid-for-nav">
         <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
             <div class="wy-side-nav-search">
-                <a href="/" class="icon icon-home"> .NET Core Command-Line Interface (CLI)</a>
+                <a href="/" class="icon icon-home"> {{siteName}}</a>
                 <form id="content_search" action="search.html">
                     <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
                     <input name="q" id="mkdocs-search-query" type="text" class="search_input search-query ui-autocomplete-input" placeholder="Search docs" autocomplete="off" autofocus>
@@ -90,7 +143,7 @@
         <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
             <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
                 <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-                <a href="#">.NET Core Command-Line Interface (CLI)</a>
+                <a href="#">{{siteName}}</a>
             </nav>
             <div class="wy-nav-content">
                 <div class="rst-content">
@@ -116,7 +169,7 @@
                         </div>
                         <hr />
                         <div role="contentinfo">
-                            <p>© Copyright 2017, <a href="#">.NET Core Command-Line Interface (CLI)</a>.</p>
+                            <p>© Copyright 2017, <a href="#">{{siteName}}</a>.</p>
                         </div>
                         Built with <a href="#">mDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
                     </footer>
@@ -129,6 +182,5 @@
             <a href="#" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
         </span>
     </div>
-    <script src="/scripts/theme.js"></script>
 </body>
 </html>
