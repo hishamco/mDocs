@@ -100,60 +100,20 @@
                 </form>
             </div>
             <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul class="current">
-                    <li>
-                        <ul class="subnav">
-							<li class="toctree-l1">
-								<a href="/">Overview</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/telemetry">Telemetry</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/extensibility">Extensibility Model</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/test-protocol">Test communication protocol</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/using-ci-with-cli">Continuous Integration</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/dotnet">dotnet</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/dotnet-new">dotnet new</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/dotnet-restore">dotnet restore</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/dotnet-run">dotnet run</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/dotnet-build">dotnet build</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/dotnet-test">dotnet test</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/dotnet-pack">dotnet pack</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/dotnet-publish">dotnet publish</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/dotnet-install-script">dotnet install-script</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/project-json">project.json</a>
-							</li>
-							<li class="toctree-l1">
-								<a href="/global-json">global.json</a>
-							</li>
-                        </ul>
-                    </li>
-                </ul>
+                <ul>
+					{{#each categories}}
+						<li class="toctree-l1">
+							<span>{{name}}</span>
+							<ul class="subnav">
+								{{#each pages}}
+									<li class="toctree-l1">
+										<a href="{{url}}">{{title}}</a>
+									</li>
+								{{/each}}
+							</ul>
+						</li>
+					{{/each}}
+				</ul>
             </div>
         </nav>
         <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
