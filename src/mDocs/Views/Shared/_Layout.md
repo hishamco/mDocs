@@ -27,9 +27,11 @@
 			{
 				context = eval(result);
 				context.title = "";
+				context.prevPage = {};
+				context.nextPage = {};
 				var pages = getPages(context.categories);
 				setTitle(pages);
-				// replace the tokens in the 'title' tag
+				// evaluate the tokens in the 'title' tag
 				var source = $("title").text();
 				var template = Handlebars.compile(source);
 				var html = template({
@@ -37,7 +39,7 @@
 					"title" : context.title
 				});
 				$("title").text(html);
-				// replace the tokens in the 'body' tag
+				// evaluate the tokens in the 'body' tag
 				source = $("body").html();
 				template = Handlebars.compile(source);
 				html = template(context);
@@ -60,12 +62,26 @@
 				if(pageUrl == "")
 				{
 					context.title = pages[0].title;
+					context.prevPage.title = "";
+					context.prevPage.url = "#";
+					context.nextPage.title = pages[1].title;
+					context.nextPage.url = pages[1].url;
 					return;
 				}
-				for(var i=0; i<pages.length;i++)
+				for(var i = 1; i < pages.length; i++)
 				{			
 					if(pages[i].url == pageUrl){
 						context.title = pages[i].title;
+						context.prevPage.title = pages[i-1].title;
+						context.prevPage.url = pages[i-1].url;
+						if(pages.length - 1 == i){
+							context.nextPage.title = "";
+							context.nextPage.url = "#";
+						}
+						else{
+							context.nextPage.title = pages[i+1].title;		
+							context.nextPage.url = pages[i+1].url;
+						}
 						break;
 					}
 				}
@@ -164,8 +180,8 @@
                     </div>
                     <footer>
                         <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                            <a href="#" class="btn btn-neutral float-right" title="">Next <span class="icon icon-circle-arrow-right"></span></a>
-                            <a href="#" class="btn btn-neutral" title=""><span class="icon icon-circle-arrow-left"></span> Previous</a>
+                            <a href="{{nextPage.url}}" class="btn btn-neutral float-right" title="{{nextPage.title}}">Next <span class="icon icon-circle-arrow-right"></span></a>
+                            <a href="{{prevPage.url}}" class="btn btn-neutral" title="{{prevPage.title}}"><span class="icon icon-circle-arrow-left"></span> Previous</a>
                         </div>
                         <hr />
                         <div role="contentinfo">
