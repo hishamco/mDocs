@@ -18,76 +18,7 @@
     <script src="/scripts/jquery-2.1.1.min.js"></script>
     <script src="/scripts/modernizr-2.8.3.min.js"></script>
     <script type="text/javascript" src="/scripts/highlight.pack.js"></script>
-	<script src="/scripts/handlebars-v4.0.5.js"></script>
-	    <script src="/scripts/theme.js"></script>
-		<script type="text/javascript">
-		$(function(){
-			var context = {};
-			$.get("/config.json", function(result)
-			{
-				context = eval(result);
-				context.title = "";
-				context.prevPage = {};
-				context.nextPage = {};
-				var pages = getPages(context.categories);
-				setTitle(pages);
-				// evaluate the tokens in the 'title' tag
-				var source = $("title").text();
-				var template = Handlebars.compile(source);
-				var html = template({
-					"siteName": context.siteName,
-					"title" : context.title
-				});
-				$("title").text(html);
-				// evaluate the tokens in the 'body' tag
-				source = $("body").html();
-				template = Handlebars.compile(source);
-				html = template(context);
-				$("body").html(html);
-			});
-			function getPages(categories){
-				var pages = [];
-				$.each(categories, function(index, item){
-					$.each(item.pages, function(index, item){
-						pages.push(item);
-					});
-				});
-				return pages;
-			}
-			function setTitle(pages)
-			{
-				var url = location.href;
-				var slashIndex = url.lastIndexOf("/");
-				var pageUrl = url.substring(slashIndex + 1);
-				if(pageUrl == "")
-				{
-					context.title = pages[0].title;
-					context.prevPage.title = "";
-					context.prevPage.url = "#";
-					context.nextPage.title = pages[1].title;
-					context.nextPage.url = pages[1].url;
-					return;
-				}
-				for(var i = 1; i < pages.length; i++)
-				{			
-					if(pages[i].url == pageUrl){
-						context.title = pages[i].title;
-						context.prevPage.title = pages[i-1].title;
-						context.prevPage.url = pages[i-1].url;
-						if(pages.length - 1 == i){
-							context.nextPage.title = "";
-							context.nextPage.url = "#";
-						}
-						else{
-							context.nextPage.title = pages[i+1].title;		
-							context.nextPage.url = pages[i+1].url;
-						}
-						break;
-					}
-				}
-			}
-		});
-	</script>
+	<script src="/scripts/theme.js"></script>
 </head>
 <body class="wy-body-for-nav" role="document">
     <div class="wy-grid-for-nav">
@@ -126,7 +57,7 @@
                     <div role="navigation" aria-label="breadcrumbs navigation">
                         <ul class="wy-breadcrumbs">
                             <li><a href="/">Docs</a> &raquo;</li>
-                            <li>{{title}}</li>
+							<li>{{title}}</li>
                             <li class="wy-breadcrumbs-aside">
                                 <a href="#" class="icon icon-github"> Edit on GitHub</a>
                             </li>
@@ -139,7 +70,7 @@
                         </div>
                     </div>
                     <footer>
-                        <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+						<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
                             <a href="{{nextPage.url}}" class="btn btn-neutral float-right" title="{{nextPage.title}}">Next <span class="icon icon-circle-arrow-right"></span></a>
                             <a href="{{prevPage.url}}" class="btn btn-neutral" title="{{prevPage.title}}"><span class="icon icon-circle-arrow-left"></span> Previous</a>
                         </div>
